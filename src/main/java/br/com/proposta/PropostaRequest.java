@@ -48,6 +48,10 @@ public class PropostaRequest {
 		return new Proposta(
 				this.documento, this.email, this.nome, this.endereco, this.salarioBruto);
 	}
+	
+	 public String getDocumento() {
+	        return documento;
+	    }
 
 	@Override
     public String toString() {
