@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,9 @@ import validations.CPFouCNPJ;
 @Entity
 public class Proposta {
 
+	 public enum StatusProposta {
+	        ELEGIVEL, NAO_ELEGIVEL
+	    }
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +49,9 @@ public class Proposta {
 	@Column(nullable = false)
 	@CPFouCNPJ
 	private String documento;
+	
+	 @Enumerated(EnumType.STRING)
+	 private StatusProposta status;
 
 
 	
@@ -65,6 +73,23 @@ public class Proposta {
 	
 	    public Long getId() {
 	        return id;
+	    }
+	    
+	    public void setStatus(StatusProposta status) {
+	        this.status = status;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Proposta{" +
+	                "id=" + id +
+	                ", documento='" + documento + '\'' +
+	                ", email='" + email + '\'' +
+	                ", nome='" + nome + '\'' +
+	                ", endereco='" + endereco + '\'' +
+	                ", salarioBruto=" + salarioBruto +
+	                ", status=" + status +
+	                '}';
 	    }
 }
 

@@ -1,5 +1,6 @@
 package br.com.proposta;
 
+
 import java.net.URI;
 
 import javax.transaction.Transactional;
@@ -25,8 +26,8 @@ public class PropostaController {
 	
 	@Autowired
 	private PropostaRepository propostaRepository;
-
 	
+		
 	@PostMapping
     @Transactional
     public ResponseEntity<?> cadastra(@RequestBody @Valid PropostaRequest request,
@@ -46,4 +47,6 @@ public class PropostaController {
 	private boolean documentoJaExiste(String documento) {
 	        return propostaRepository.findByDocumento(documento).isPresent();
 }
+
+	
 }
